@@ -1,24 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import login from "../../assets/images/planet2.jpg";
 import "../../assets/css/login.css";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { usersData } from "./users";
 
+var username = "";
+var data = "";
 const Login = () => {
   let history = useHistory();
 
-  const userCredentials = {
-    username: "mayank@gmail.com",
-    password: "Delhi",
-  };
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    data = usersData;
+    console.log(usersData);
+  }, []);
+
   function handleSubmit(event) {
     if (
-      email === userCredentials.username &&
-      password === userCredentials.password
+      data.find((element) => element.username === email) &&
+      data.find((element) => element.password === password)
     ) {
-      console.log("successfull");
+      username = email;
       let path = `/planets`;
       history.push(path);
     } else {
@@ -83,4 +88,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return dispatch({ type: "LOGIN", payload: username });
+};
+
+export default connect(null, mapDispatchToProps)(Login);
