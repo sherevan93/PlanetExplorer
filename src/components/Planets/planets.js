@@ -46,12 +46,25 @@ const Planets = (props) => {
     return () => (mounted = false);
   }, []);
 
+  function logout() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
+
   return (
     <div>
       <header className={classes.header}>
         <div className="container">
           <h4>Planet Explorer</h4>
-          <p className={classes.p}>Welcome: &nbsp; {props.username}</p>
+          <p className={classes.p}>
+            Welcome &nbsp; {props.username}&nbsp;&nbsp;
+            <a href="#" onClick={logout}>
+              LOGOUT
+            </a>
+          </p>
+          {/* <p className={classes.p}>
+            <button>Logout</button>
+          </p> */}
         </div>
       </header>
       <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">

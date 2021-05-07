@@ -7,7 +7,7 @@ import { usersData } from "./users";
 
 var username = "";
 var data = "";
-const Login = () => {
+const Login = (props) => {
   let history = useHistory();
 
   const [email, setEmail] = useState("");
@@ -20,12 +20,13 @@ const Login = () => {
 
   function handleSubmit(event) {
     if (
-      data.find((element) => element.username === email) &&
+      data.find((element) => element.email === email) &&
       data.find((element) => element.password === password)
     ) {
-      username = email;
+      let loginUser = data.filter((element) => element.email === email);
       let path = `/planets`;
       history.push(path);
+      props.setUserName(loginUser[0].username);
     } else {
       event.preventDefault();
     }
@@ -88,8 +89,12 @@ const Login = () => {
   );
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return dispatch({ type: "LOGIN", payload: username });
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUserName: (username) => {
+      dispatch({ type: "LOGIN", payload: username });
+    },
+  };
 };
 
 export default connect(null, mapDispatchToProps)(Login);
