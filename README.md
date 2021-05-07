@@ -1,3 +1,5 @@
+Planet explorer application enable users to view list of planets based on population
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
