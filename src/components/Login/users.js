@@ -2,7 +2,7 @@ export const usersData = [
   {
     username: "Mayank",
     email: "mayank@gmail.com",
-    password: "Delhi",
+    password: "Delhi", 
   },
   {
     username: "Naqiul", 
