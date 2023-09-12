@@ -1,6 +1,6 @@
 export const usersData = [
   {
-    username: "Mayank",
+    username: "Mayank", 
     email: "mayank@gmail.com",
     password: "Delhi", 
   },
