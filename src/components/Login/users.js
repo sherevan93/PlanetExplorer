@@ -5,7 +5,7 @@ export const usersData = [
     password: "Delhi",
   },
   {
-    username: "Naqiul",
+    username: "Naqiul", 
     email: "naqi@gmail.com",
     password: "Delhi",
   },
